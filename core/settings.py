@@ -81,23 +81,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': "test_db",
-    #     "USER": "postgres",
-    #     'PASSWORD': '12345',
-    #     'HOST': 'db',
-    #     'PORT': '5432',
-    # },
-
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "micro-ecom",
+        'NAME': "test_db",
         "USER": "postgres",
         'PASSWORD': '12345',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '5432',
     },
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': "micro-ecom",
+    #     "USER": "postgres",
+    #     'PASSWORD': '12345',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # },
 
     # 'default': {
     #         'ENGINE': 'django.db.backends.sqlite3',
