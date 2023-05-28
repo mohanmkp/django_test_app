@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,9 +29,16 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+PROJECT_ROOT = os.path.dirname(__file__)
+print(PROJECT_ROOT)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,8 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'authentication',
-    'product'
+    "apps.seller",
+    'apps.authentication',
+    'apps.product',
+    # 'import_export',
+
 ]
 
 MIDDLEWARE = [
@@ -52,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'middleware.agent_location.User_Track'
+    # 'middleware.agent_location.User_Track'
 
 ]
 
@@ -81,23 +92,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "test_db",
-        "USER": "postgres",
-        'PASSWORD': '12345',
-        'HOST': 'db',
-        'PORT': '5432',
-    },
-
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': "micro-ecom",
+    #     'NAME': "post_db",
     #     "USER": "postgres",
     #     'PASSWORD': '12345',
-    #     'HOST': 'localhost',
+    #     'HOST': 'db',
     #     'PORT': '5432',
     # },
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "micro-ecom",
+        "USER": "postgres",
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
     #
     # 'default': {
     #         'ENGINE': 'django.db.backends.sqlite3',
@@ -176,3 +187,10 @@ AUTH_USER_MODEL = 'authentication.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}

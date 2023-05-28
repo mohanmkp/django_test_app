@@ -1,22 +1,11 @@
 version: "3.3"
 services:
-  django-with-db:
-    build: .
-    volumes:
-      - .:/Ecommerce-app
-    ports:
-      - "8005:8005"
-    image: ecommerce:django
-    container_name: ecommerce_django_app_container
-    command: python manage.py runserver 0.0.0.0:8005
-    depends_on:
-      - db
   db:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=test_db
+      - POSTGRES_DB=post_db
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=12345
     container_name: postgres_db
@@ -36,13 +25,25 @@ services:
     volumes:
       - ./data/db:/var/lib/pgadmin4
   react-app:
-    build: ../react_app/
+    build: ../react-app/
     container_name: react-container
-    image: ecommerce:react
+    image: ecrce:react
     volumes:
       - .:/Ecommerce-app
     ports:
       - "3000:3000"
+
+  django-with-db:
+    build: .
+    volumes:
+      - .:/Ecommerce-app
+    ports:
+      - "8005:8005"
+    image: eco:django
+    container_name: ecommerce_django_app_container
+    command: python manage.py runserver 0.0.0.0:8005
+    depends_on:
+      - db
 
 
 

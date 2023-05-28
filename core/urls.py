@@ -20,7 +20,7 @@ from core import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("product/", include("product.urls"))
+    path("product/", include("apps.product.urls"))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_URL)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
