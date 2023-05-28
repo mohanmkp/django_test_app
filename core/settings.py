@@ -29,9 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
-PROJECT_ROOT = os.path.dirname(__file__)
-print(PROJECT_ROOT)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+
 
 
 
@@ -48,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     "apps.seller",
-    'apps.authentication',
+    'apps.users',
     'apps.product',
     # 'import_export',
 
@@ -171,7 +169,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 # CORS_ALLOWED_ORIGINS = [

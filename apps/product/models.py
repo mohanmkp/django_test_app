@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-from apps.authentication.models import User
+from apps.users.models import User
 
 
 
@@ -13,7 +13,11 @@ class Base_model(models.Model):
         abstract = True
 
 
-
+category_choices = (
+    ("tshirt", "tshirt"),
+    ("shirt", "shirt"),
+    ("mobile", "mobile")
+)
 class Product(Base_model):
     image = models.ImageField(upload_to="products/")
     title = models.CharField(max_length=255, unique=True)
@@ -22,6 +26,7 @@ class Product(Base_model):
     total_item = models.IntegerField()
     available_item = models.IntegerField()
     total_sell = models.IntegerField(null=True, blank=True, default=0)
+    category = models.CharField(max_length=255, null=True, blank=True, choices=category_choices)
 
 
 

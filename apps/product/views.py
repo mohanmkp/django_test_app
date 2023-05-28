@@ -8,8 +8,6 @@ from custom_auth.product_permission import Product_Permission
 
 
 
-
-
 class product_view(generics.ListCreateAPIView):
     permission_classes = [Product_Permission]
     serializer_class = product_serializer
