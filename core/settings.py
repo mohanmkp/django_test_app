@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "apps.seller",
     'apps.users',
     'apps.product',
+    'apps.orders'
     # 'import_export',
 
 ]
@@ -99,19 +100,19 @@ DATABASES = {
     #     'PORT': '5432',
     # },
 
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "micro-ecom",
-        "USER": "postgres",
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    },
-    #
     # 'default': {
-    #         'ENGINE': 'django.db.backends.sqlite3',
-    #         'NAME': BASE_DIR / 'db.sqlite3',
-    #     }
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': "micro-ecom",
+    #     "USER": "postgres",
+    #     'PASSWORD': '12345',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # },
+    #
+    'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
 }
 
 

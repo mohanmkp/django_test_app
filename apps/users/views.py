@@ -49,8 +49,9 @@ class SingIn(generics.CreateAPIView):
                     token = Token.objects.get(user=user)
                     return Response({
                         "msg": "signin successfully",
-                        "token": token.key
-                    }, status=status.HTTP_302_FOUND)
+                        "token": token.key,
+                        "first_name": user.first_name,
+                    }, status=status.HTTP_200_OK)
                 else:
                     return Response({
                         "msg": "invalid password",

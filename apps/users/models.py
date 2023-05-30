@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
+import uuid
 
 
 
@@ -62,5 +62,19 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_superuser
+
+
+
+class Customer_Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, unique=True, editable=False)
+    trademark = models.TextField()
+    house_number = models.CharField(max_length=255)
+    address = models.TextField()
+    pincode = models.IntegerField()
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+
 
 
