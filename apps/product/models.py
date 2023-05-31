@@ -16,7 +16,8 @@ class Base_model(models.Model):
 category_choices = (
     ("tshirt", "tshirt"),
     ("shirt", "shirt"),
-    ("mobile", "mobile")
+    ("mobile", "mobile"),
+    ("electronic", "electronic")
 )
 class Product(Base_model):
     image = models.ImageField(upload_to="products/")
