@@ -9,6 +9,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("product/", include("apps.product.urls")),
     path("user/", include("apps.users.urls")),
+    path("order/", include("apps.orders.urls")),
+
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_URL)
 

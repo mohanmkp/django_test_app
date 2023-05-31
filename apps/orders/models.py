@@ -16,11 +16,11 @@ class ProdictOrder(Base_model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     deliver_charge = models.IntegerField()
     delivery_address = models.TextField()
-    alter_phone = models.CharField(max_length=10)
+    alter_phone = models.CharField(max_length=10, null=True, blank=True)
     payment_method = models.CharField(max_length=255, choices=payment_method_list)
     is_delivered = models.BooleanField(default=False)
     is_canceled = models.BooleanField(default=False)
-    no_of_items = models.IntegerField()
+    no_of_items = models.IntegerField(default=1)
 
 
 
