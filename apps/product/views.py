@@ -15,21 +15,19 @@ class product_view(generics.ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         id = self.request.query_params.get('id')
-        if id:
-            try:
-                queryset = Product.objects.filter(id=id).first()
-                return Response({"title": queryset.title,
-                                 "price": queryset.price,
-                                 "total_item": queryset.total_item,
-                                 "available_item": queryset.available_item,
-                                 "image": queryset.image.url,
-                                 "id": queryset.id
-                                 })
-            except:
-                return Response({"msg": "Invalid product id"}, status=status.HTTP_404_NOT_FOUND)
-        queryset = Product.objects.filter(is_active=True).order_by("-created_on")
-        serializer = product_serializer(queryset,  many=True)
-        return Response(serializer.data)
+        try:
+            queryset = Product.objects.filter(id=id).first()
+            if queryset:
+                data = product_serializer(queryset)
+                return Response(data.data)
+        except:
+            return Response({"msg": "Invalid product id"}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            queryset = Product.objects.filter(is_active=True).order_by("-created_on")
+            serializer = product_serializer(queryset, many=True)
+
+            return Response(serializer.data)
+
 
     def post(self, request, *args, **kwargs):
         serializer_data = product_serializer(data=request.data)

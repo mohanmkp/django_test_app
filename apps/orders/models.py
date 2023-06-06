@@ -6,7 +6,7 @@ from apps.users.models import User
 
 
 
-class ProdictOrder(Base_model):
+class OrdersDetails(Base_model):
     payment_method_list = (
         ("cash", "cash"),
         ("upi", "upi")
@@ -21,6 +21,8 @@ class ProdictOrder(Base_model):
     is_delivered = models.BooleanField(default=False)
     is_canceled = models.BooleanField(default=False)
     no_of_items = models.IntegerField(default=1)
+    total_price = models.IntegerField()
+    buy_price = models.IntegerField()
 
 
 

@@ -1,12 +1,12 @@
 from apps.orders.serializers import *
-from apps.orders.models import ProdictOrder
+from apps.orders.models import OrdersDetails
 
 
 
 class OderSerializer(serializers.ModelSerializer):
     product_id = serializers.CharField(max_length=255)
     class Meta:
-        model = ProdictOrder
+        model = OrdersDetails
         fields = [
             "product_id",
             "deliver_charge",

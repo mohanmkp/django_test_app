@@ -20,6 +20,7 @@ class UserAction(generics.CreateAPIView):
             user = serializer.save()
             user.set_password(user.password)
             user.email = user.email.lower()
+            user.is_active = True
             user.save()
             token = Token.objects.create(user=user)
             return Response({
@@ -46,11 +47,13 @@ class SingIn(generics.CreateAPIView):
             else:
                 password = serializer.data['password']
                 if user.check_password(password):
-                    token = Token.objects.get(user=user)
+                    token, created = Token.objects.get_or_create(user=user)
+                    print(token)
                     return Response({
                         "msg": "signin successfully",
                         "token": token.key,
                         "first_name": user.first_name,
+                        "usr_id": user.id
                     }, status=status.HTTP_200_OK)
                 else:
                     return Response({

@@ -25,9 +25,10 @@ class Product(Base_model):
     price = models.BigIntegerField()
     is_active = models.BooleanField(default=True)
     total_item = models.IntegerField()
-    available_item = models.IntegerField()
+    available_item = models.IntegerField(null=True, blank=True)
     total_sell = models.IntegerField(null=True, blank=True, default=0)
     category = models.CharField(max_length=255, null=True, blank=True, choices=category_choices)
+    more_details = models.TextField(null=True, blank=True)
 
 
 
