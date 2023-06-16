@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy on server(vm)
-        uses: appleboy/ssh-action@master
 
       - name : Install Dependencies
         run: |
