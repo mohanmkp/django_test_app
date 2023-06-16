@@ -2,7 +2,10 @@
 
 set -e
 sudo pwd
+echo "start deployment "
+
 cd /home/apps/django_test_app/
+
 git pull
 echo "changes pulling"
 
