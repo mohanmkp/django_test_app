@@ -1,4 +1,8 @@
+import traceback
+
 from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 from apps.users.serializers import signup
@@ -10,12 +14,30 @@ from rest_framework import status
 
 
 
+
+def sending_mail(otp, mail):
+    try:
+        subject = "Visiontrek Card"
+        text_content = 'Verify your email address'
+        html_content = render_to_string('email.html', {
+            'otp': otp
+        })
+        send_mail(subject, text_content, 'mohan.pandit@visiontrek.in', [mail],  html_message=html_content,)
+    except Exception as e:
+        print(e)
+        traceback.print_exc()
+        print("mail not send")
+
+
+
 class UserAction(generics.CreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = signup.Sign_Up_Serializer
 
     def post(self, request, *args, **kwargs):
         serializer = signup.Sign_Up_Serializer(data=request.data)
+        sending_mail(otp="454544", mail="prajapatimohan241@gmail.com")
+
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
             user.set_password(user.password)
