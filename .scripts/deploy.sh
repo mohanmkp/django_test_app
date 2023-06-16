@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -e
-
+sudo pwd
+cd cd /home/apps/django_test_app/
 git pull
 echo "changes pulling"
 
