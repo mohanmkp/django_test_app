@@ -24,12 +24,6 @@ jobs:
         workload_identity_provider: 'projects/532449317655/locations/global/workloadIdentityPools/githubaction/providers/github'
         service_account: 'github-actions@gcp-l-390008.iam.gserviceaccount.com'
 
-    - id: 'compute-ssh'
-      uses: 'google-github-actions/ssh-compute@v0'
-      with:
-        instance_name: 'instance-1'
-        zone: 'us-central1-a'
-        ssh_private_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYQeViPLVrkQXwvWLVPZhvr3GupEb7kxSjG+wt7XDQAWFmregWsDISXghXNlASJU3HURy2Jj5+bi2tpGmZtdTqZBu9ljCiqqFtWgY6ZpOkbIAedBxHdMSFuHeQUsze/keCa7P9BKkF/mi1592oEjrsRuYGIUCBnuIyjTTdn+CWbAvyJ9mTnLpARf+aYcz5w0xtwOLXqYVAaGAoq3RUjWXZnFxJBq1qI2dfbQhhLPgdaRfvppb6aJ/voZKkDvaxRsAHryQSDfBpjP+jTF326du39t8u0/FuFrlU87MF3e8DIiLuOWA0I/zICHt1T9v9Q3V/eef6qCfu25SaaSKEl+U1 google-ssh'
-        command: 'echo Hello world'
+
 
 
