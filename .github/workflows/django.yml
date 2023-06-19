@@ -7,22 +7,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-
-  job_id:
+  dj_deploy:
     permissions:
       contents: 'read'
       id-token: 'write'
     runs-on: ubuntu-latest
 
     steps:
-    - uses: 'actions/checkout@v2'
+    - uses: 'actions/checkout@v3'
 
     - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
       with:
+        token_format: 'access_token'
         workload_identity_provider: 'projects/532449317655/locations/global/workloadIdentityPools/githubaction/providers/github'
-        service_account: 'github-actions@gcp-l-390009.iam.gserviceaccount.com'
+        service_account: 'github-actions@gcp-l-390008.iam.gserviceaccount.com'
 
     - id: 'compute-ssh'
       uses: 'google-github-actions/ssh-compute@v0'
