@@ -32,9 +32,4 @@ jobs:
         ssh_private_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYQeViPLVrkQXwvWLVPZhvr3GupEb7kxSjG+wt7XDQAWFmregWsDISXghXNlASJU3HURy2Jj5+bi2tpGmZtdTqZBu9ljCiqqFtWgY6ZpOkbIAedBxHdMSFuHeQUsze/keCa7P9BKkF/mi1592oEjrsRuYGIUCBnuIyjTTdn+CWbAvyJ9mTnLpARf+aYcz5w0xtwOLXqYVAaGAoq3RUjWXZnFxJBq1qI2dfbQhhLPgdaRfvppb6aJ/voZKkDvaxRsAHryQSDfBpjP+jTF326du39t8u0/FuFrlU87MF3e8DIiLuOWA0I/zICHt1T9v9Q3V/eef6qCfu25SaaSKEl+U1 google-ssh'
         command: 'echo Hello world'
 
-    # Example of using the output
-    - id: 'test'
-      run: |-
-        echo '${{ steps.compute-ssh.outputs.stdout }}'
-        echo '${{ steps.compute-ssh.outputs.stderr }}'
 
